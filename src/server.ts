@@ -1,4 +1,5 @@
 import express from 'express';
+import { tasksRouter } from './routes/tasks.routes.js';
 
 const app = express();
 const PORT = 6767;
@@ -17,6 +18,8 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.json({ status: 'ok ' });
 });
+
+app.use("/tasks", tasksRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
