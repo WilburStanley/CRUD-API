@@ -5,6 +5,7 @@ import { errorHandler } from "./middleware/error-handler.js";
 export const app = express();
 
 app.use(express.json());
+app.disable("x-powered-by");
 
 app.get("/", (request, response) => {
   response.json({
