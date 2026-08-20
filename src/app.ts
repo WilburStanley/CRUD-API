@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { tasksRouter } from "./routes/tasks.routes.js";
 import { errorHandler } from "./middleware/error-handler.js";
+import "./data/db.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const openApiSpec = JSON.parse(readFileSync(join(__dirname, "openapi.json"), "utf-8"));
