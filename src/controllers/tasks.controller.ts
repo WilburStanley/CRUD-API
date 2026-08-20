@@ -3,6 +3,12 @@ import { tasks } from "../data/tasks.store.js";
 import { AppError } from "../middleware/error-handler.js";
 import type { CreateTaskInput, UpdateTaskInput } from "../schemas/task.schema.js";
 
+const seedTasks = [
+  { id: 1, title: "Buy milk", done: false },
+  { id: 2, title: "Walk the dog", done: false },
+  { id: 3, title: "Finish assignment", done: true },
+];
+
 export const getAllTasks = (request: Request, response: Response) => {
   response.json(tasks);
 };
@@ -60,4 +66,10 @@ export const deleteTask = (request: Request, response: Response) => {
 
   tasks.splice(index, 1);
   response.status(204).send();
+};
+
+export const resetTasks = (request: Request, response: Response) => {
+  tasks.length = 0;
+  tasks.push(...seedTasks.map((task) => ({ ...task })));
+  response.json(tasks);
 };

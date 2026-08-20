@@ -5,6 +5,7 @@ import {
   createTask,
   updateTask,
   deleteTask,
+  resetTasks,
 } from "../controllers/tasks.controller.js";
 import { validateBody } from "../middleware/validate.js";
 import { createTaskSchema, updateTaskSchema } from "../schemas/task.schema.js";
@@ -16,3 +17,4 @@ tasksRouter.get("/:id", getTaskById);
 tasksRouter.post("/", validateBody(createTaskSchema), createTask);
 tasksRouter.put("/:id", validateBody(updateTaskSchema), updateTask);
 tasksRouter.delete("/:id", deleteTask);
+tasksRouter.post("/reset", resetTasks);
